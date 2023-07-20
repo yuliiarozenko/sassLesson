@@ -1,0 +1,35 @@
+$light-color: #ffe8d6;
+$main-color: #a5a58d;
+$secondary-color: #ee9b00;
+
+$font-stack: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+@function set-text-color($color) {
+    @if(lightness($color) > 70) {
+        @return black;
+    } @else {
+        @return white;
+    }
+}
+
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color);
+}
+
+$spaces: (0, 1, 2, 3, 4, 5);
+
+@each $space in $spaces {
+    .m-#{$space} {
+        margin: #{$space}rem;
+    }
+    .my-#{$space} {
+        margin: #{$space}rem 0;
+    }
+    .p-#{$space} {
+        padding: #{$space}rem;
+    }
+    .py-#{$space} {
+        padding: #{$space}rem 0;
+    }
+}
